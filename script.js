@@ -5,7 +5,6 @@ function createGrid(rows, cols) {
     container.style.setProperty('--grid-cols', cols);
     for (c = 0; c < (rows * cols); c++) {
         let cell = document.createElement("div");
-        /*cell.innerText = (c);*/
         container.appendChild(cell).className = "grid-item";
 
         cell.addEventListener("mouseout", function() {
@@ -17,7 +16,15 @@ function createGrid(rows, cols) {
 
 createGrid(16, 16);
 
-/*var etchcontainer = document.querySelectorAll(".container");
-etchcontainer.addEventListener("click", function() {
-    etchcontainer.style.backgroundColor = "black";
-});*/
+let btn = document.getElementById("button1");
+    btn.addEventListener("click", createnewGrid)
+
+function resetGrid() {
+    container.innerText = '';
+}
+
+function createnewGrid() {
+    resetGrid();
+    let number = prompt("What should be the new size of your sketch (N x N)?");
+    createGrid(number, number);
+}
